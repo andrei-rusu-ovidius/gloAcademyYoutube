@@ -105,8 +105,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const youtuberContainer = document.getElementById('youtuberContainer');
 
 
+        const youtubetAnimate = () => {
+            if (youTuberModal.style.display == "") {
+
+            }
+
+        };
+
         const qw = [3840, 2560, 1920, 1280, 854, 640, 426, 256];
-        const qh = [2160, 1440, 1080, 720, 480, 360, 240, 144]; 
+        const qh = [2160, 1440, 1080, 720, 480, 360, 240, 144];
         const sizeVideo = () => {
 
             let ww = document.documentElement.clientWidth;
@@ -134,7 +141,17 @@ document.addEventListener('DOMContentLoaded', () => {
             elem.addEventListener('click', () => {
                 const idVideo = elem.dataset.youtuber;
                 youTuberModal.style.display = "block";
-
+                youTuberModal.animate([{
+                        opacity: '0'
+                    },
+                    {
+                        opacity: '1'
+                    }
+                ], {
+                    duration: 300,
+                    iterations: 1
+                });
+                youtubetAnimate()
                 const youTuberFrame = document.createElement('iframe');
                 youTuberFrame.src = `https://youtube.com/embed/${idVideo}`;
 
@@ -147,6 +164,17 @@ document.addEventListener('DOMContentLoaded', () => {
         })
 
         youTuberModal.addEventListener('click', () => {
+
+            youTuberModal.animate([{
+                    opacity: '1'
+                },
+                {
+                    opacity: '0'
+                }
+            ], {
+                duration: 300,
+                iterations: 1
+            });
             youTuberModal.style.display = "";
             youtuberContainer.textContent = "";
             window.removeEventListener('resize', sizeVideo);
@@ -157,6 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         {
             const API_KEY = 'AIzaSyAkRAWykvc-AmFxAt8E_S52Ghim4ojNdzM';
+            const CLIENT_ID = '736906312457-k76jeaftnpuvj73v4tu6n4a4jr7s95ll.apps.googleusercontent.com';
 
         }
 
